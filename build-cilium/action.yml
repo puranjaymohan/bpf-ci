@@ -3,6 +3,9 @@ inputs:
   output-dir:
     description: 'Path to the output of cilium build'
     required: true
+  cilium-revision:
+    description: 'Cilium revision to build. main is used by default'
+    required: false
 
 runs:
   using: "composite"
@@ -15,5 +18,6 @@ runs:
     - name: Build cilium/cilium bpf programs
       env:
         OUTPUT_DIR: ${{ inputs.output-dir }}
+        CILIUM_REVISION: ${{ inputs.cilium-revision }}
       shell: bash
       run: ${GITHUB_ACTION_PATH}/build-cilium.sh

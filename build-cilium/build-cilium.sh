@@ -40,4 +40,6 @@ popd
 
 extract_bpf_progs bpf "*.o" $OUTPUT_DIR/bpf
 
+git rev-parse HEAD > $OUTPUT_DIR/cilium-revision
+
 popd
